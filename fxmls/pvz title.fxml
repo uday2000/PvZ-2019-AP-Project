@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="224.0" prefWidth="352.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="224.0" fitWidth="352.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@title%20screen.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="146.0" layoutY="130.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="60.0">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+               <image>
+                  <Image url="@playbutton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="146.0" layoutY="162.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="60.0">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+               <image>
+                  <Image url="@exitbutton.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</Pane>
