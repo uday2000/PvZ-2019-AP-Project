@@ -1,24 +1,25 @@
-//package sample;
-
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-public class Controller {
+public class TitleScene {
 
     @FXML
-    public ImageView exitButtonImage;
+    private ImageView exitButtonImage = new ImageView();
     @FXML
     private ImageView playButtonImage = new ImageView();
-    @FXML
-    private Button playButton = new Button();
+
+    private Scene nextScene;
 
     private Image playPressed = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\PlayButtonPressed.png"));
     private Image playReleased = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\PlayButtonReleased.png"));
     private Image exitPressed = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\ExitButtonPressed.png"));
     private Image exitRelease = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\ExitButtonReleased.png"));
+
 
     @FXML
     private void playPress() throws InterruptedException {
@@ -26,7 +27,7 @@ public class Controller {
     }
 
     @FXML
-    private void exitPress() throws InterruptedException{
+    private void exitPress() throws InterruptedException {
         exitButtonImage.setImage(exitPressed);
     }
 
@@ -44,7 +45,12 @@ public class Controller {
         System.exit(0);
     }
 
-    public void gotoScene() {
-        System.out.print("something");
+    void setNextScene(Scene _scene) {
+        nextScene = _scene;
+    }
+
+    public void nextScreen(MouseEvent _mouseEvent) {
+        Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
+        _stage.setScene(nextScene);
     }
 }
