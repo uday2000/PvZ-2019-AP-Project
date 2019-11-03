@@ -20,8 +20,15 @@ public class Main extends Application {
         Scene gameselectscene = new Scene(gameselectparent, 352 ,224);
         SlotScene gameselectcontroller = (SlotScene)Slotloader.getController();
 
+        FXMLLoader Playerloader = new FXMLLoader(getClass().getResource("FXMLS/MainScreen.fxml"));
+        Parent playermainparent = Playerloader.load();
+        Scene playermainscene = new Scene(playermainparent, 352 ,224);
+        MainScene playermaincontroller = (MainScene)Playerloader.getController();
+
         titlecontroller.setNextScene(gameselectscene);
         gameselectcontroller.setPrevScene(titlescene);
+        gameselectcontroller.setPlayerScene(playermainscene);
+        playermaincontroller.setPrevScene(gameselectscene);
 
         TitleStage.setTitle("Retro Plants V/S Zombies");
         TitleStage.setScene(titlescene);
@@ -29,7 +36,7 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         launch(args);
     }
 }
