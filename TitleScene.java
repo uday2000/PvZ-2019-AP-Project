@@ -1,10 +1,14 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class TitleScene {
 
@@ -41,12 +45,20 @@ public class TitleScene {
         exitButtonImage.setImage(exitRelease);
     }
 
-    public void exitGame() {
-        System.exit(0);
-    }
-
     void setNextScene(Scene _scene) {
         nextScene = _scene;
+    }
+
+    public void exitClick(MouseEvent _mouseEvent) throws Exception{
+        FXMLLoader exitloader = new FXMLLoader(getClass().getResource("FXMLS/ExitPanel.fxml"));
+        Parent exitparent = exitloader.load();
+        Scene exitscene = new Scene(exitparent, 352 ,224);
+
+        Stage exitstage = new Stage();
+        exitstage.setScene(exitscene);
+        exitscene.setFill(Color.TRANSPARENT);
+        exitstage.initStyle(StageStyle.TRANSPARENT);
+        exitstage.show();
     }
 
     public void nextScreen(MouseEvent _mouseEvent) {

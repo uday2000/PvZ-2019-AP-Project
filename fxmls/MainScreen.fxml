@@ -25,7 +25,7 @@
             <Image url="@../assets/sprites/buttons/CreditsButtonReleased.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="playGameButtonImage" fitHeight="98.0" fitWidth="141.0" layoutX="168.0" layoutY="3.0" onMouseEntered="#playGamePress" onMouseExited="#playGameRelease" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="playGameButtonImage" fitHeight="98.0" fitWidth="141.0" layoutX="168.0" layoutY="3.0" onMouseClicked="#playScreen" onMouseEntered="#playGamePress" onMouseExited="#playGameRelease" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sprites/buttons/AdventureButtonReleased.png" />
          </image>

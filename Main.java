@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -25,13 +26,22 @@ public class Main extends Application {
         Scene playermainscene = new Scene(playermainparent, 352 ,224);
         MainScene playermaincontroller = (MainScene)Playerloader.getController();
 
+        FXMLLoader Levelloader = new FXMLLoader(getClass().getResource("FXMLS/LevelScreen.fxml"));
+        Parent levelparent = Levelloader.load();
+        Scene levelscene = new Scene(levelparent, 352 ,224);
+        LevelScene levelcontroller = (LevelScene)Levelloader.getController();
+
         titlecontroller.setNextScene(gameselectscene);
         gameselectcontroller.setPrevScene(titlescene);
         gameselectcontroller.setPlayerScene(playermainscene);
         playermaincontroller.setPrevScene(gameselectscene);
+        playermaincontroller.setPlayScene(levelscene);
+        levelcontroller.setPrevScene(playermainscene);
 
         TitleStage.setTitle("Retro Plants V/S Zombies");
         TitleStage.setScene(titlescene);
+        TitleStage.initStyle(StageStyle.UNDECORATED);
+
         TitleStage.show();
     }
 
