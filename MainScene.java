@@ -1,3 +1,4 @@
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
+import javafx.scene.text.*;
 
 public class MainScene {
 
@@ -23,7 +26,11 @@ public class MainScene {
     @FXML
     private ImageView exitButtonImage = new ImageView();
 
-    private Scene prevScene, playScene, creditsScene, levelselScene;
+    private Scene prevScene, playScene, creditsScene, levelselScene, gamePlayScene;
+    private int panewidth = 1408;
+    private int paneheight = 896;
+
+    public Text nametext;
 
     private Image backSlotPressed = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\ChangePlayerButtonPressed.png"));
     private Image backSlotReleased = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\ChangePlayerButtonReleased.png"));
@@ -92,9 +99,14 @@ public class MainScene {
         _stage.setScene(prevScene);
     }
     @FXML
-    private void playScreen(MouseEvent _mouseEvent) {
+    private void playScreen(MouseEvent _mouseEvent) throws Exception{
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
-        _stage.setScene(playScene);
+        FXMLLoader LevelLoader = new FXMLLoader(getClass().getResource("fxmls/LevelScreen.fxml"));
+        Parent levelParent = LevelLoader.load();
+        Scene levelScene = new Scene(levelParent, panewidth, paneheight);
+        LevelScene levelsceneController =  LevelLoader.getController();
+        levelsceneController.setPrevScene((Scene)((Node) _mouseEvent.getSource()).getScene());
+        _stage.setScene(levelScene);
     }
     @FXML
     private void levelSelectScreen(MouseEvent _mouseEvent) {
@@ -110,7 +122,7 @@ public class MainScene {
     {
         FXMLLoader exitloader = new FXMLLoader(getClass().getResource("FXMLS/ExitPanel.fxml"));
         Parent exitparent = exitloader.load();
-        Scene exitscene = new Scene(exitparent, 352 ,224);
+        Scene exitscene = new Scene(exitparent, panewidth, paneheight);
 
         Stage exitstage = new Stage();
         exitstage.setScene(exitscene);
@@ -122,14 +134,10 @@ public class MainScene {
     void setPrevScene(Scene _scene) {
         prevScene = _scene;
     }
-    void setPlayScene(Scene _scene) {
-        playScene = _scene;
-    }
-    void setlevelScene(Scene _scene) {
+    void setLevelSelScene(Scene _scene) {
         levelselScene = _scene;
     }
     void setCreditsScene(Scene _scene) {
         creditsScene = _scene;
     }
-
 }

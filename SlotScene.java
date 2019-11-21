@@ -15,7 +15,8 @@ public class SlotScene {
     @FXML
     private ImageView loadGameButtonImage = new ImageView();
 
-    private Scene prevScene, playerScene;
+    private Scene prevScene;
+    private Scene nextScene;
 
     private Image backPressed = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\BackButtonPressed.png"));
     private Image backReleased = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\BackButtonReleased.png"));
@@ -28,22 +29,27 @@ public class SlotScene {
     private void backPress() throws InterruptedException {
         backButtonImage.setImage(backPressed);
     }
+
     @FXML
     private void newGamePress() throws InterruptedException {
         newGameButtonImage.setImage(newGamePressed);
     }
+
     @FXML
     private void loadGamePress() throws InterruptedException {
         loadGameButtonImage.setImage(loadGamePressed);
     }
+
     @FXML
     private void backRelease() {
         backButtonImage.setImage(backReleased);
     }
+
     @FXML
     private void loadGameRelease() {
         loadGameButtonImage.setImage(loadGameReleased);
     }
+
     @FXML
     private void newGameRelease() {
         newGameButtonImage.setImage(newGameReleased);
@@ -54,17 +60,17 @@ public class SlotScene {
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(prevScene);
     }
-    @FXML
-    private void playScreen(MouseEvent _mouseEvent) {
-        Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
-        _stage.setScene(playerScene);
-    }
 
     void setPrevScene(Scene _scene) {
         prevScene = _scene;
     }
-    void setPlayerScene(Scene _scene){
-        playerScene = _scene;
+    void setNextScene(Scene _scene) {
+        nextScene = _scene;
     }
 
+    @FXML
+    private void playScreen(MouseEvent _mouseEvent) {
+        Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
+        _stage.setScene(nextScene);
+    }
 }

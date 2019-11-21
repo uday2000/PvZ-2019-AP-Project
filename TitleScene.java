@@ -17,6 +17,9 @@ public class TitleScene {
     @FXML
     private ImageView playButtonImage = new ImageView();
 
+    private int panewidth = 1408;
+    private int paneheight = 896;
+
     private Scene nextScene;
 
     private Image playPressed = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\PlayButtonPressed.png"));
@@ -50,17 +53,15 @@ public class TitleScene {
     }
 
     public void exitClick(MouseEvent _mouseEvent) throws Exception{
-        FXMLLoader exitloader = new FXMLLoader(getClass().getResource("FXMLS/ExitPanel.fxml"));
+        FXMLLoader exitloader = new FXMLLoader(getClass().getResource("fxmls/ExitPanel.fxml"));
         Parent exitparent = exitloader.load();
-        Scene exitscene = new Scene(exitparent, 352 ,224);
-
+        Scene exitscene = new Scene(exitparent, panewidth ,paneheight);
         Stage exitstage = new Stage();
         exitstage.setScene(exitscene);
         exitscene.setFill(Color.TRANSPARENT);
         exitstage.initStyle(StageStyle.TRANSPARENT);
         exitstage.show();
     }
-
     public void nextScreen(MouseEvent _mouseEvent) {
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(nextScene);
