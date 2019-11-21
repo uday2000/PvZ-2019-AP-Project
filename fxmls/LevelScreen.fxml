@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="224.0" prefWidth="352.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LevelScene">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="896.0" prefWidth="1408.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LevelScene">
    <children>
-      <ImageView fitHeight="224.0" fitWidth="352.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+      <ImageView fitHeight="986.0" fitWidth="1408.0" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
             <Image url="@../assets/sprites/bgs/LevelScreenBG.png" />
          </image></ImageView>
-      <GridPane layoutX="48.0" layoutY="48.0" prefHeight="160.0" prefWidth="288.0">
+      <GridPane fx:id="grid" layoutX="192.0" layoutY="192.0" prefHeight="640.0" prefWidth="1152.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,234 +42,234 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="2">
-               <image>
-                  <Image url="@../assets/sprites/plants/PeashooterIdle.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@../assets/sprites/plants/SunflowerIdle.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../assets/sprites/plants/WalnutHalfEaten.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../assets/sprites/plants/PeashooterIdle.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
-               <image>
-                  <Image url="@../assets/sprites/plants/PotatomineArmed.gif" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="0" GridPane.rowIndex="0">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="1">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="0" GridPane.rowIndex="1">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="2">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="0" GridPane.rowIndex="2">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="4">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="0" GridPane.rowIndex="3">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="0" GridPane.rowIndex="4">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="4">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1" GridPane.rowIndex="0">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="4" GridPane.rowIndex="4">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="5">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="2" GridPane.rowIndex="0">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="5" GridPane.rowIndex="4">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="5" GridPane.rowIndex="3">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="5" GridPane.rowIndex="2">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="6" GridPane.rowIndex="1">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="3" GridPane.rowIndex="0">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="8" GridPane.rowIndex="4">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="7" GridPane.rowIndex="4">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="6" GridPane.rowIndex="4">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="6" GridPane.rowIndex="3">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="3" GridPane.rowIndex="4">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="6" GridPane.rowIndex="2">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="4" GridPane.rowIndex="0">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="8">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="7" GridPane.rowIndex="1">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="7">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="6">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="4" GridPane.rowIndex="4">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="5" GridPane.rowIndex="0">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="8" GridPane.rowIndex="2">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="5" GridPane.rowIndex="3">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="8" GridPane.rowIndex="3">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="5" GridPane.rowIndex="4">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="7" GridPane.rowIndex="3">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="6" GridPane.rowIndex="0">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="6" GridPane.rowIndex="1">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="6" GridPane.rowIndex="2">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="8" GridPane.rowIndex="1">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="6" GridPane.rowIndex="3">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="7" GridPane.rowIndex="2">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="6" GridPane.rowIndex="4">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="7" GridPane.rowIndex="0">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="7" GridPane.rowIndex="1">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="7" GridPane.rowIndex="2">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="7" GridPane.rowIndex="3">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="3">
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="7" GridPane.rowIndex="4">
+               <image>
+                  <Image url="@../assets/sprites/misc/EmptyBlock.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="8" GridPane.rowIndex="0">
+               <image>
+                  <Image url="@../assets/sprites/misc/EmptyBlock.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="8" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../assets/sprites/misc/EmptyBlock.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="8" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../assets/sprites/misc/EmptyBlock.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="8" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@../assets/sprites/misc/EmptyBlock.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="160.0" fitWidth="128.0" onDragDropped="#cellOnDragDropped" onDragEntered="#cellOnDragEntered" onDragExited="#cellOnDragExitted" onDragOver="#cellOnDragOver" onMouseClicked="#returnURL" opacity="0.2" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="8" GridPane.rowIndex="4">
                <image>
                   <Image url="@../assets/sprites/misc/EmptyBlock.png" />
                </image>
             </ImageView>
          </children>
       </GridPane>
-      <GridPane layoutX="17.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="32.0">
+      <GridPane layoutX="64.0" layoutY="192.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="128.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -271,67 +281,117 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+            <ImageView fitHeight="160.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                <image>
                   <Image url="@../assets/sprites/misc/Lawnmover.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="1">
+            <ImageView fitHeight="160.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="1">
                <image>
                   <Image url="@../assets/sprites/misc/Lawnmover.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="2">
+            <ImageView fitHeight="160.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="2">
                <image>
                   <Image url="@../assets/sprites/misc/Lawnmover.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="3">
+            <ImageView fitHeight="160.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="3">
                <image>
                   <Image url="@../assets/sprites/misc/Lawnmover.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="4">
+            <ImageView fitHeight="160.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.rowIndex="4">
                <image>
                   <Image url="@../assets/sprites/misc/Lawnmover.png" />
                </image>
             </ImageView>
          </children>
       </GridPane>
-      <ImageView fitHeight="18.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+      <ImageView fitHeight="90.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
             <Image url="@../assets/sprites/misc/SunValueBar.png" />
          </image>
       </ImageView>
-      <TextFlow layoutX="18.0" layoutY="1.0" prefHeight="16.0" prefWidth="45.0" textAlignment="CENTER" />
-      <ImageView fx:id="zombie1" fitHeight="48.0" fitWidth="48.0" layoutX="262.0" layoutY="63.0" onMousePressed="#moveZombie" pickOnBounds="true" preserveRatio="true" smooth="false">
-         <image>
-            <Image url="@../assets/sprites/zombies/ZombieWalking.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="17.0" fitWidth="29.0" layoutX="66.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+      <TextFlow layoutX="73.0" layoutY="5.0" prefHeight="64.0" prefWidth="177.0" textAlignment="CENTER">
+         <children>
+            <Text fx:id="counter" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" translateY="10.0" wrappingWidth="102.01171875">
+               <font>
+                  <Font name="SF Pixelate" size="60.0" />
+               </font></Text>
+         </children></TextFlow>
+      <ImageView fitHeight="68.0" fitWidth="116.0" layoutX="264.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
             <Image url="@../assets/sprites/misc/Shovel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="zombie2" fitHeight="64.0" fitWidth="48.0" layoutX="221.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" smooth="false">
-         <image>
-            <Image url="@../assets/sprites/zombies/BucketZombieWalking.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="64.0" fitWidth="48.0" layoutX="155.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" smooth="false">
-         <image>
-            <Image url="@../assets/sprites/zombies/ConeZombieEating.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="menuButtonImage" fitHeight="24.0" fitWidth="64.0" layoutX="288.0" onMouseClicked="#menuclick" onMouseEntered="#menuPress" onMouseExited="#menuRelease" pickOnBounds="true" preserveRatio="true" smooth="false">
+      <ImageView fx:id="menuButtonImage" fitHeight="96.0" fitWidth="256.0" layoutX="1152.0" onMouseClicked="#menuclick" onMouseEntered="#menuPress" onMouseExited="#menuRelease" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
             <Image url="@../assets/sprites/buttons/MenuButtonReleased.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="32.0" fitWidth="186.0" layoutX="96.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="128.0" fitWidth="930.0" layoutX="480.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sprites/misc/SidePanel.png" />
+         </image>
+      </ImageView>
+      <GridPane gridLinesVisible="true" layoutX="480.0" prefHeight="128.0" prefWidth="640.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/sprites/misc/PlantButton_0.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../assets/sprites/misc/PlantButton_1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+               <image>
+                  <Image url="@../assets/sprites/misc/PlantButton_2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+               <image>
+                  <Image url="@../assets/sprites/misc/PlantButton_3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+               <image>
+                  <Image url="@../assets/sprites/misc/PlantButton_4.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="plant" onDragDetected="#onDragDetected" prefHeight="128.0" prefWidth="128.0" />
+            <Label fx:id="sun" onDragDetected="#onDragDetected" prefHeight="128.0" prefWidth="128.0" GridPane.columnIndex="1" />
+            <Label fx:id="walnut" onDragDetected="#onDragDetected" prefHeight="128.0" prefWidth="128.0" GridPane.columnIndex="2" />
+            <Label fx:id="potato" onDragDetected="#onDragDetected" prefHeight="128.0" prefWidth="128.0" GridPane.columnIndex="3" />
+            <Label fx:id="blank" onDragDetected="#onDragDetected" prefHeight="128.0" prefWidth="128.0" GridPane.columnIndex="4" />
+         </children>
+      </GridPane>
+      <ImageView fx:id="zombie1" fitHeight="256.0" fitWidth="196.0" layoutX="1590.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/zombies/BucketZombieWalking.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="zombie2" fitHeight="256.0" fitWidth="196.0" layoutX="1775.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/zombies/ConeZombieWalking.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="105.0" fitWidth="803.0" layoutX="224.0" layoutY="612.0" pickOnBounds="true" preserveRatio="true" smooth="false" translateX="108.0" translateY="204.0">
+         <image>
+            <Image url="@../assets/sprites/misc/ProgressBar.gif" />
          </image>
       </ImageView>
    </children>

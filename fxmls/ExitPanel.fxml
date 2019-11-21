@@ -8,21 +8,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="224.0" prefWidth="352.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PopupController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="896.0" prefWidth="1408.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PopupController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="224.0" opacity="0.5" stroke="#000000" strokeType="INSIDE" width="352.0" />
-      <ImageView fitHeight="96.0" fitWidth="128.0" layoutX="112.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="896.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="1408.0" />
+      <ImageView fitHeight="480.0" fitWidth="512.0" layoutX="448.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sprites/Panels/PopupExit.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="yesButtonImage" fitHeight="16.0" fitWidth="32.0" layoutX="128.0" layoutY="136.0" onMouseClicked="#exitGame" onMouseEntered="#yesPress" onMouseExited="#yesRelease" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="yesButtonImage" fitHeight="64.0" fitWidth="160.0" layoutX="512.0" layoutY="536.0" onMouseClicked="#exitGame" onMouseEntered="#yesPress" onMouseExited="#yesRelease" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sprites/buttons/YesButtonReleased.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="noButtonImage" fitHeight="16.0" fitWidth="32.0" layoutX="192.0" layoutY="136.0" onMouseClicked="#goBack" onMouseEntered="#noPress" onMouseExited="#noRelease" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="noButtonImage" fitHeight="64.0" fitWidth="160.0" layoutX="768.0" layoutY="536.0" onMouseClicked="#goBack" onMouseEntered="#noPress" onMouseExited="#noRelease" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sprites/buttons/NoButtonReleased.png" />
          </image>
