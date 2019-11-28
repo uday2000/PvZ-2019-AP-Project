@@ -28,20 +28,27 @@ public class Main extends Application {
         Scene playermainscene = new Scene(playermainparent, panewidth ,paneheight);
         MainScene playermaincontroller = Playerloader.getController();
 
-        /*FXMLLoader LevelLoader = new FXMLLoader(getClass().getResource("fxmls/LevelScreen.fxml"));
-        Parent levelParent = LevelLoader.load();
-        Scene levelScene = new Scene(levelParent, 352, 224);
-        LevelScene levelsceneController =  LevelLoader.getController();*/
+        FXMLLoader Creditloader = new FXMLLoader(getClass().getResource("fxmls/CreditsScreen.fxml"));
+        Parent creditparent = Creditloader.load();
+        Scene creditscene = new Scene(creditparent, panewidth ,paneheight);
+        CreditsScene creditcontroller = Creditloader.getController();
+
+        FXMLLoader LevelSelectloader = new FXMLLoader(getClass().getResource("fxmls/LevelSelectScreen.fxml"));
+        Parent levelselparent = LevelSelectloader.load();
+        Scene levelselscene = new Scene(levelselparent, panewidth ,paneheight);
+        LevelSelectScene levelselcontroller = LevelSelectloader.getController();
 
         titlecontroller.setNextScene(gameselectscene);
         gameselectcontroller.setPrevScene(titlescene);
         gameselectcontroller.setNextScene(playermainscene);
         playermaincontroller.setPrevScene(gameselectscene);
-        //playermaincontroller.setPlayScene(levelScene);
-        //levelsceneController.setPrevScene(playermainscene);
+        playermaincontroller.setCreditsScene(creditscene);
+        playermaincontroller.setLevelSelScene(levelselscene);
+        creditcontroller.setPrevScene(playermainscene);
+        levelselcontroller.setPrevScene(playermainscene, playermaincontroller);
 
         TitleStage.getIcons().add(new Image(getClass().getResourceAsStream("assets/sprites/PVZLogo.png")));
-        TitleStage.setTitle("Plants V/S Zombies: RETRO");
+        TitleStage.setTitle("Plants V/S Zombies: RETRO EDITION");
         TitleStage.setScene(titlescene);
         TitleStage.initStyle(StageStyle.UNDECORATED);
         TitleStage.show();

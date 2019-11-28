@@ -129,7 +129,6 @@ public class LevelScene {
             int coins = Integer.parseInt(counter.getText());
             counter.setText(Integer.toString(coins + 25));
         }
-
         return img_path;
     }
 

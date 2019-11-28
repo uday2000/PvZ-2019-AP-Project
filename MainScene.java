@@ -26,11 +26,12 @@ public class MainScene {
     @FXML
     private ImageView exitButtonImage = new ImageView();
 
-    private Scene prevScene, playScene, creditsScene, levelselScene, gamePlayScene;
+    private Scene prevScene, creditsScene, levelselScene;
     private int panewidth = 1408;
     private int paneheight = 896;
-
+    public Text levelnum;
     public Text nametext;
+    public TextFlow lvlnumbox;
 
     private Image backSlotPressed = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\ChangePlayerButtonPressed.png"));
     private Image backSlotReleased = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\ChangePlayerButtonReleased.png"));
@@ -66,11 +67,15 @@ public class MainScene {
     @FXML
     private void levelPress() throws InterruptedException {
         levelButtonImage.setImage(levelPressed);
+        lvlnumbox.setTranslateX(20);
+        lvlnumbox.setTranslateY(4);
     }
 
     @FXML
     private void levelRelease() {
         levelButtonImage.setImage(levelReleased);
+        lvlnumbox.setTranslateX(0);
+        lvlnumbox.setTranslateY(0);
     }
 
     @FXML
@@ -114,7 +119,7 @@ public class MainScene {
         _stage.setScene(levelselScene);
     }
     @FXML
-    private void creditsScreen(MouseEvent _mouseEvent) {
+    private void creditsScreen(MouseEvent _mouseEvent) throws Exception{
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(creditsScene);
     }
@@ -139,5 +144,8 @@ public class MainScene {
     }
     void setCreditsScene(Scene _scene) {
         creditsScene = _scene;
+    }
+    void setlevelnum(int n) {
+        levelnum.setText(Integer.toString(n));
     }
 }
