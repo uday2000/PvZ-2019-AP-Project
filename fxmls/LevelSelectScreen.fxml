@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="896.0" prefWidth="1408.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LevelSelectScene">
+   <children>
+      <ImageView fitHeight="896.0" fitWidth="1408.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/bgs/LevelSelectBG.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="button1" fitHeight="128.0" fitWidth="128.0" layoutX="256.0" layoutY="256.0" onMouseClicked="#selectLevel1" onMouseEntered="#b1Press" onMouseExited="#b1Release" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/UnlockedLevelButtonReleased1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="button2" fitHeight="128.0" fitWidth="128.0" layoutX="512.0" layoutY="256.0" onMouseClicked="#selectLevel2" onMouseEntered="#b2Press" onMouseExited="#b2Release" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/LockedLevelButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="button3" fitHeight="128.0" fitWidth="128.0" layoutX="768.0" layoutY="256.0" onMouseClicked="#selectLevel3" onMouseEntered="#b3Press" onMouseExited="#b3Release" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/LockedLevelButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="button4" fitHeight="128.0" fitWidth="128.0" layoutX="1024.0" layoutY="256.0" onMouseClicked="#selectLevel4" onMouseEntered="#b4Press" onMouseExited="#b4Release" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/LockedLevelButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="button5" fitHeight="128.0" fitWidth="128.0" layoutX="256.0" layoutY="512.0" onMouseClicked="#selectLevel5" onMouseEntered="#b5Press" onMouseExited="#b5Release" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/LockedLevelButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="512.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/LockedLevelButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="768.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/LockedLevelButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="1024.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/LockedLevelButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backButtonImage" fitHeight="150.0" fitWidth="256.0" layoutX="576.0" layoutY="706.0" onMouseClicked="#backClick" onMouseEntered="#backPress" onMouseExited="#backRelease" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/BackButtonReleased.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

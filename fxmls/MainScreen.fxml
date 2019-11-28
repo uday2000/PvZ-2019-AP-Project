@@ -21,7 +21,7 @@
             <Image url="@../assets/sprites/buttons/ChangePlayerButtonReleased.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="creditsButtonImage" fitHeight="256.0" fitWidth="256.0" layoutX="476.0" layoutY="492.0" onMouseEntered="#creditsPress" onMouseExited="#creditsRelease" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="creditsButtonImage" fitHeight="256.0" fitWidth="256.0" layoutX="476.0" layoutY="492.0" onMouseClicked="#creditsScreen" onMouseEntered="#creditsPress" onMouseExited="#creditsRelease" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sprites/buttons/CreditsButtonReleased.png" />
          </image>
@@ -31,7 +31,7 @@
             <Image url="@../assets/sprites/buttons/AdventureButtonReleased.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="levelButtonImage" fitHeight="360.0" fitWidth="452.0" layoutX="696.0" layoutY="268.0" onMouseEntered="#levelPress" onMouseExited="#levelRelease" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="levelButtonImage" fitHeight="360.0" fitWidth="452.0" layoutX="696.0" layoutY="268.0" onMouseClicked="#levelSelectScreen" onMouseEntered="#levelPress" onMouseExited="#levelRelease" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sprites/buttons/LevelSelectButtonReleased.png" />
          </image>
@@ -48,6 +48,14 @@
                   <Font name="SF Pixelate" size="40.0" />
                </font>
             </Text>
+         </children>
+      </TextFlow>
+      <TextFlow fx:id="lvlnumbox" layoutX="1002.0" layoutY="367.0" prefHeight="47.0" prefWidth="48.0" textAlignment="CENTER">
+         <children>
+            <Text fx:id="levelnum" fill="WHITE" rotate="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="148.9361228942871">
+               <font>
+                  <Font name="SF Pixelate" size="55.0" />
+               </font></Text>
          </children>
       </TextFlow>
    </children>
