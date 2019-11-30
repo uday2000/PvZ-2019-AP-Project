@@ -1,21 +1,33 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 public class SlotScene {
 
     @FXML
     private ImageView slot1, slot2, slot3, slot4, backButtonImage;
-
     private Scene prevScene;
     private Scene nextScene;
+    private MainScene MScont;
+    private ArrayList<Player> players;
+
+    private MusicController MC;
+    public void setmc(MusicController mc) { MC = mc;}
+
+    private int panewidth = 1408;
+    private int paneheight = 896;
 
     private Image backPressed = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\BackButtonPressed.png"));
     private Image backReleased = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\BackButtonReleased.png"));
@@ -63,24 +75,60 @@ public class SlotScene {
     }
 
     @FXML
-    private void playScreen(MouseEvent _mouseEvent) {
+    private void playScreen(MouseEvent _mouseEvent) throws Exception{
         ImageView btnimg = (ImageView) _mouseEvent.getSource();
         if(!imgcomp(btnimg.getImage(), newGamePressed)) {
+            String s = ((ImageView) _mouseEvent.getSource()).getId();
+            MScont.setPlayer(players.get(Integer.parseInt(s.substring(s.length()-1)) - 1));
             Stage _stage = (Stage) ((Node) _mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(nextScene);
         }
         else{
-            System.out.println("newgame");
+            FXMLLoader ngloader = new FXMLLoader(getClass().getResource("fxmls/NameEnterPanel.fxml"));
+            Parent ngparent = ngloader.load();
+            Scene ngscene = new Scene(ngparent, panewidth ,paneheight);
+            Stage ngstage = new Stage();
+            PopupController ngcont = ngloader.getController();
+
+            ngcont.setPrevStageScene((Stage)((Node)_mouseEvent.getSource()).getScene().getWindow());
+            ngcont.setnextsceneandcont(nextScene, MScont);
+            ngcont.setcurscene(this);
+
+            ngstage.setScene(ngscene);
+            ngscene.setFill(Color.TRANSPARENT);
+            ngstage.initStyle(StageStyle.TRANSPARENT);
+            ngstage.show();
         }
     }
 
-    private boolean imgcomp(Image i1, Image i2)
-    {
+    private boolean imgcomp(Image i1, Image i2) {
         int w = (int) i1.getWidth(), h = (int) i1.getHeight();
         PixelReader r1 = i1.getPixelReader(), r2 = i2.getPixelReader();
         double nsp = IntStream.range(0, w).parallel().mapToLong(i -> IntStream.range(0, h).parallel().filter(j -> r1.getArgb(i, j) != r2.getArgb(i, j)).count()).sum();
         if(nsp > 0)
             return false;
         return true;
+    }
+    public void setSlots(ArrayList<Player> p) {
+        players = p;
+        refresh();
+    }
+    private void refresh() {
+        ImageView[] slotsarr = {slot1, slot2, slot3, slot4};
+        for(int i=0; i<4; i++) {
+            if(i < players.size()){
+                slotsarr[i].setImage(loadGameReleased);
+            }
+            else{
+                slotsarr[i].setImage(newGameReleased);
+            }
+        }
+    }
+    public void setmaincont(MainScene ms){
+        MScont = ms;
+    }
+    public void addslot(Player p) {
+        players.add(p);
+        refresh();
     }
 }

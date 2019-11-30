@@ -1,15 +1,11 @@
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,9 +17,12 @@ public class LevelSelectScene
     private int paneheight = 896;
 
     @FXML
-    private ImageView backButtonImage, button1 = new ImageView(), button2 = new ImageView(), button3 = new ImageView(), button4 = new ImageView(), button5 = new ImageView();
+    private ImageView backButtonImage, button1, button2, button3, button4, button5;
     private Scene prevScene;
     private MainScene msobj;
+
+    private MusicController MC;
+    public void setmc(MusicController mc) { MC = mc;}
 
     private Image backPressed = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\BackButtonPressed.png"));
     private Image backReleased = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\BackButtonReleased.png"));
@@ -37,14 +36,14 @@ public class LevelSelectScene
     private Image b4Released = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\UnlockedLevelButtonReleased4.png"));
     private Image b5Pressed = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\UnlockedLevelButtonPressed5.png"));
     private Image b5Released = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\UnlockedLevelButtonReleased5.png"));
-    private Image lockedbutton = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\LockedLevelButton.png"));
+    private Image lockedButton = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\LockedLevelButton.png"));
 
-    private int[] unlockedlevels = {1, 1, 0, 0, 0};
-    private ArrayList<ImageView> levels = new ArrayList<ImageView>(Arrays.asList(button1, button2, button3, button4, button5));
-    private ArrayList<Image> levelunlockimg = new ArrayList<Image>(Arrays.asList(b1Released, b2Released, b3Released, b4Released, b5Released));
+    private int[] unlockedlevels = {1, 0, 0, 0, 0};
 
     @FXML
     public void initialize() {
+        ArrayList<ImageView> levels = new ArrayList<ImageView>(Arrays.asList(button1, button2, button3, button4, button5));
+        ArrayList<Image> levelunlockimg = new ArrayList<Image>(Arrays.asList(b1Released, b2Released, b3Released, b4Released, b5Released));
         for(int i=0; i<unlockedlevels.length; i++) {
             if(unlockedlevels[i] == 1)
                 levels.get(i).setImage(levelunlockimg.get(i));
@@ -70,85 +69,80 @@ public class LevelSelectScene
     }
     @FXML
     private void b2Press() throws InterruptedException {
-        if(!imgcomp(button2.getImage(), lockedbutton))
+        if(!imgcomp(button2.getImage(), lockedButton))
             button2.setImage(b2Pressed);
     }
     @FXML
     private void b2Release() {
-        if(!imgcomp(button2.getImage(), lockedbutton))
+        if(!imgcomp(button2.getImage(), lockedButton))
             button2.setImage(b2Released);
     }
     @FXML
     private void b3Press() throws InterruptedException {
-        if(!imgcomp(button3.getImage(), lockedbutton))
+        if(!imgcomp(button3.getImage(), lockedButton))
           button3.setImage(b3Pressed);
     }
     @FXML
     private void b3Release() {
-        if(!imgcomp(button3.getImage(), lockedbutton))
+        if(!imgcomp(button3.getImage(), lockedButton))
             button3.setImage(b3Released);
     }
     @FXML
     private void b4Press() throws InterruptedException {
-        if(!imgcomp(button4.getImage(), lockedbutton))
+        if(!imgcomp(button4.getImage(), lockedButton))
            button4.setImage(b4Pressed);
     }
     @FXML
     private void b4Release() {
-        if(!imgcomp(button4.getImage(), lockedbutton))
+        if(!imgcomp(button4.getImage(), lockedButton))
             button4.setImage(b4Released);
     }
     @FXML
     private void b5Press() throws InterruptedException {
-        if(!imgcomp(button5.getImage(), lockedbutton))
+        if(!imgcomp(button5.getImage(), lockedButton))
             button5.setImage(b5Pressed);
     }
     @FXML
     private void b5Release() {
-        if(!imgcomp(button5.getImage(), lockedbutton))
+        if(!imgcomp(button5.getImage(), lockedButton))
             button5.setImage(b5Released);
     }
 
     @FXML
-    private void selectLevel1(MouseEvent _mouseEvent)
-    {
-        if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedbutton)) {
+    private void selectLevel1(MouseEvent _mouseEvent) {
+        if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedButton)) {
             msobj.setlevelnum(1);
             Stage _stage = (Stage) ((Node) _mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(prevScene);
         }
     }
     @FXML
-    private void selectLevel2(MouseEvent _mouseEvent)
-    {
-        if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedbutton)) {
+    private void selectLevel2(MouseEvent _mouseEvent) {
+        if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedButton)) {
             msobj.setlevelnum(2);
             Stage _stage = (Stage) ((Node) _mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(prevScene);
         }
     }
     @FXML
-    private void selectLevel3(MouseEvent _mouseEvent)
-    {
-        if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedbutton)) {
+    private void selectLevel3(MouseEvent _mouseEvent) {
+        if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedButton)) {
             msobj.setlevelnum(3);
             Stage _stage = (Stage) ((Node) _mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(prevScene);
         }
     }
     @FXML
-    private void selectLevel4(MouseEvent _mouseEvent)
-    {
-        if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedbutton)) {
+    private void selectLevel4(MouseEvent _mouseEvent) {
+        if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedButton)) {
             msobj.setlevelnum(4);
             Stage _stage = (Stage) ((Node) _mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(prevScene);
         }
     }
     @FXML
-    private void selectLevel5(MouseEvent _mouseEvent)
-    {
-        if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedbutton)){
+    private void selectLevel5(MouseEvent _mouseEvent) {
+        if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedButton)){
             msobj.setlevelnum(5);
             Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(prevScene);
@@ -165,13 +159,32 @@ public class LevelSelectScene
         msobj = _mainscene;
     }
 
-    private boolean imgcomp(Image i1, Image i2)
-    {
+    private boolean imgcomp(Image i1, Image i2) {
         int w = (int) i1.getWidth(), h = (int) i1.getHeight();
         PixelReader r1 = i1.getPixelReader(), r2 = i2.getPixelReader();
         double nsp = IntStream.range(0, w).parallel().mapToLong(i -> IntStream.range(0, h).parallel().filter(j -> r1.getArgb(i, j) != r2.getArgb(i, j)).count()).sum();
         if(nsp > 0)
             return false;
         return true;
+    }
+
+    public void setunlocklevels(int n) {
+        for(int i=0; i<4; i++) {
+            if(i<n)
+                unlockedlevels[i] = 1;
+            else
+                unlockedlevels[i] = 0;
+        }
+        refreshImages();
+    }
+    public void refreshImages() {
+        ArrayList<ImageView> levels = new ArrayList<ImageView>(Arrays.asList(button1, button2, button3, button4, button5));
+        ArrayList<Image> levelunlockimg = new ArrayList<Image>(Arrays.asList(b1Released, b2Released, b3Released, b4Released, b5Released));
+        for(int i=0; i<unlockedlevels.length; i++) {
+            if(unlockedlevels[i] == 1)
+                levels.get(i).setImage(levelunlockimg.get(i));
+            else
+                levels.get(i).setImage(lockedButton);
+        }
     }
 }

@@ -6,11 +6,18 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.ArrayList;
+
 public class Main extends Application {
 
     private int panewidth = 1408;
     private int paneheight = 896;
-    
+
+    private boolean music = true;
+    private boolean sfx = true;
+
+    private ArrayList<Player> playerList = new ArrayList<Player>();
+
     @Override
     public void start(Stage TitleStage) throws Exception{
         FXMLLoader Titleloader = new FXMLLoader(getClass().getResource("fxmls/TitleScreen.fxml"));
@@ -38,14 +45,37 @@ public class Main extends Application {
         Scene levelselscene = new Scene(levelselparent, panewidth ,paneheight);
         LevelSelectScene levelselcontroller = LevelSelectloader.getController();
 
+        FXMLLoader Settingloader = new FXMLLoader(getClass().getResource("fxmls/SettingsScreen.fxml"));
+        Parent settingsparent = Settingloader.load();
+        Scene settingscene = new Scene(settingsparent, panewidth ,paneheight);
+        SettingsScene settingcontroller = Settingloader.getController();
+
+        MusicController mc = new MusicController();
+
         titlecontroller.setNextScene(gameselectscene);
+        titlecontroller.setmc(mc);
+
         gameselectcontroller.setPrevScene(titlescene);
         gameselectcontroller.setNextScene(playermainscene);
+        gameselectcontroller.setmc(mc);
+        gameselectcontroller.setSlots(playerList);
+        gameselectcontroller.setmaincont(playermaincontroller);
+
         playermaincontroller.setPrevScene(gameselectscene);
         playermaincontroller.setCreditsScene(creditscene);
         playermaincontroller.setLevelSelScene(levelselscene);
+        playermaincontroller.setSettingsScene(settingscene);
+        playermaincontroller.setLSS(levelselcontroller);
+        playermaincontroller.setmc(mc);
+
         creditcontroller.setPrevScene(playermainscene);
+        creditcontroller.setmc(mc);
+
+        settingcontroller.setPrevScene(playermainscene);
+        settingcontroller.setmc(mc);
+
         levelselcontroller.setPrevScene(playermainscene, playermaincontroller);
+        levelselcontroller.setmc(mc);
 
         TitleStage.getIcons().add(new Image(getClass().getResourceAsStream("assets/sprites/PVZLogo.png")));
         TitleStage.setTitle("Plants V/S Zombies: RETRO EDITION");
@@ -53,7 +83,6 @@ public class Main extends Application {
         TitleStage.initStyle(StageStyle.UNDECORATED);
         TitleStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

@@ -17,6 +17,9 @@ public class TitleScene {
     @FXML
     private ImageView playButtonImage = new ImageView();
 
+    private MusicController MC;
+    public void setmc(MusicController mc) { MC = mc;}
+
     private int panewidth = 1408;
     private int paneheight = 896;
 
@@ -26,7 +29,6 @@ public class TitleScene {
     private Image playReleased = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\PlayButtonReleased.png"));
     private Image exitPressed = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\ExitButtonPressed.png"));
     private Image exitRelease = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\ExitButtonReleased.png"));
-
 
     @FXML
     private void playPress() throws InterruptedException {
@@ -63,6 +65,7 @@ public class TitleScene {
         exitstage.show();
     }
     public void nextScreen(MouseEvent _mouseEvent) {
+        System.gc();
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(nextScene);
     }
