@@ -86,6 +86,8 @@ public class PopupController {
         SS.addslot(p);
         mcont.setPlayer(p);
         prevstage.setScene(nscene);
+        Stage _stage = (Stage)nextButtonImage.getScene().getWindow();
+        _stage.close();
     }
 
     public void setPrevStageScene(Stage _stage) {
