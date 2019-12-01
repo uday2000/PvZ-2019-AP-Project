@@ -55,9 +55,13 @@ public class TitleScene {
     }
 
     public void exitClick(MouseEvent _mouseEvent) throws Exception{
+        MC.playsfx("button");
         FXMLLoader exitloader = new FXMLLoader(getClass().getResource("fxmls/ExitPanel.fxml"));
         Parent exitparent = exitloader.load();
         Scene exitscene = new Scene(exitparent, panewidth ,paneheight);
+        PopupController exitcont = exitloader.getController();
+        exitcont.setmc(MC);
+
         Stage exitstage = new Stage();
         exitstage.setScene(exitscene);
         exitscene.setFill(Color.TRANSPARENT);
@@ -66,6 +70,7 @@ public class TitleScene {
     }
     public void nextScreen(MouseEvent _mouseEvent) {
         System.gc();
+        MC.playsfx("button");
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(nextScene);
     }

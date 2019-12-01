@@ -37,6 +37,7 @@ public class CreditsScene
     }
 
     public void backClick(MouseEvent _mouseEvent) throws Exception{
+        MC.playsfx("button");
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(prevScene);
     }

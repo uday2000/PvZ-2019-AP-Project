@@ -100,12 +100,14 @@ public class MainScene {
     @FXML
     private void backSlotScreen(MouseEvent _mouseEvent) {
         System.gc();
+        MC.playsfx("button");
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(prevScene);
     }
     @FXML
     private void playScreen(MouseEvent _mouseEvent) throws Exception{
         System.gc();
+        MC.playsfx("button");
         FXMLLoader spanLoader = new FXMLLoader(getClass().getResource("fxmls/SpanningScreen.fxml"));
         Parent spanParent = spanLoader.load();
         Scene spanScene = new Scene(spanParent, panewidth, paneheight);
@@ -114,6 +116,7 @@ public class MainScene {
 
         spanController.setlvl(Integer.parseInt(levelnum.getText()));
         spanController.setstage(_stage, spanScene);
+        spanController.setmc(MC);
 
         _stage.setScene(spanScene);
         _stage.initStyle(StageStyle.UNDECORATED);
@@ -122,26 +125,32 @@ public class MainScene {
     @FXML
     private void levelSelectScreen(MouseEvent _mouseEvent) {
         System.gc();
+        MC.playsfx("button");
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(levelselScene);
     }
     @FXML
     private void creditsScreen(MouseEvent _mouseEvent) throws Exception{
         System.gc();
+        MC.playsfx("button");
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(creditsScene);
     }
     @FXML
     private void settingsScreen(MouseEvent _mouseEvent) {
         System.gc();
+        MC.playsfx("button");
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(settingsScene);
     }
 
     public void exitGame(MouseEvent _mouseEvent) throws Exception {
+        MC.playsfx("button");
         FXMLLoader exitloader = new FXMLLoader(getClass().getResource("FXMLS/ExitPanel.fxml"));
         Parent exitparent = exitloader.load();
         Scene exitscene = new Scene(exitparent, panewidth, paneheight);
+        PopupController exitcont = exitloader.getController();
+        exitcont.setmc(MC);
 
         Stage exitstage = new Stage();
         exitstage.setScene(exitscene);

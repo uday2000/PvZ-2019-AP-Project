@@ -40,23 +40,29 @@ public class SettingsScene
     }
 
     public void backClick(MouseEvent _mouseEvent) throws Exception{
+        MC.playsfx("button");
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(prevScene);
     }
     public void boxClick(MouseEvent _mouseEvent) throws Exception{
         ImageView img = ((ImageView)((Node)_mouseEvent.getSource()));
+        MC.playsfx("button");
         if(img.getOpacity() == 1l) {
             img.setOpacity(0l);
-            if(img.getId().equals(BGMButton.getId()));
+            if(img.getId().equals(BGMButton.getId())) {
                 MC.setbgm(false);
-            if(img.getId().equals(SFXButton.getId()));
+                MC.stopAll();
+            }
+            if(img.getId().equals(SFXButton.getId()))
                 MC.setsfx(false);
         }
         else {
             img.setOpacity(1l);
-            if(img.getId().equals(BGMButton.getId()));
+            if(img.getId().equals(BGMButton.getId())) {
                 MC.setbgm(true);
-            if(img.getId().equals(SFXButton.getId()));
+                MC.playMusic("bgm");
+            }
+            if(img.getId().equals(SFXButton.getId()))
                 MC.setsfx(true);
         }
     }

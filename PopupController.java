@@ -78,10 +78,12 @@ public class PopupController {
     }
 
     public void exitGame(MouseEvent _mouseEvent) {
+        MC.playsfx("button");
         System.exit(0);
     }
 
     public void nextGame(MouseEvent _mouseEvent) {
+        MC.playsfx("button");
         Player p = new Player(ntext.getText());
         SS.addslot(p);
         mcont.setPlayer(p);
@@ -95,17 +97,20 @@ public class PopupController {
     }
 
     public void goBack(MouseEvent _mouseEvent) {
+        MC.playsfx("button");
         Stage _stage = (Stage)noButtonImage.getScene().getWindow();
         _stage.close();
     }
 
     public void savegame(MouseEvent _mouseEvent){
+        MC.playsfx("button");
         prevstage.close();
         Stage _stage = (Stage)saveButtonImage.getScene().getWindow();
         _stage.close();
     }
 
     public void resumeGame(MouseEvent _mouseEvent){
+        MC.playsfx("button");
         Stage _stage = (Stage)exitButtonImage.getScene().getWindow();
         _stage.close();
     }

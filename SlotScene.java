@@ -7,7 +7,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -38,7 +43,19 @@ public class SlotScene {
 
     @FXML
     private void buttonPress(MouseEvent _mouseEvent) throws InterruptedException {
-        ImageView btn = (ImageView)_mouseEvent.getSource();
+        ImageView btn = slot1;
+        try {
+            btn = (ImageView) _mouseEvent.getSource();
+        }catch(ClassCastException e) {
+            TextFlow tf = (TextFlow) _mouseEvent.getSource();
+            ImageView[] imgs = {slot1, slot2, slot3, slot4};
+            for(ImageView iv : imgs) {
+                if(tf.getLayoutY() == iv.getLayoutY()) {
+                    btn = iv;
+                    break;
+                }
+            }
+        }
         if(imgcomp(btn.getImage(), newGameReleased))
             btn.setImage(newGamePressed);
         else
@@ -46,7 +63,19 @@ public class SlotScene {
     }
     @FXML
     private void buttonRelease(MouseEvent _mouseEvent) throws InterruptedException {
-        ImageView btn = (ImageView)_mouseEvent.getSource();
+        ImageView btn = slot1;
+        try {
+            btn = (ImageView) _mouseEvent.getSource();
+        }catch(ClassCastException e) {
+            TextFlow tf = (TextFlow) _mouseEvent.getSource();
+            ImageView[] imgs = {slot1, slot2, slot3, slot4};
+            for(ImageView iv : imgs) {
+                if(tf.getLayoutY() == iv.getLayoutY()) {
+                    btn = iv;
+                    break;
+                }
+            }
+        }
         if(imgcomp(btn.getImage(), newGamePressed))
             btn.setImage(newGameReleased);
         else
@@ -63,6 +92,7 @@ public class SlotScene {
 
     @FXML
     private void backScreen(MouseEvent _mouseEvent) {
+        MC.playsfx("button");
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(prevScene);
     }
@@ -76,9 +106,22 @@ public class SlotScene {
 
     @FXML
     private void playScreen(MouseEvent _mouseEvent) throws Exception{
-        ImageView btnimg = (ImageView) _mouseEvent.getSource();
+        ImageView btnimg = slot1;
+        try {
+            btnimg = (ImageView) _mouseEvent.getSource();
+        }catch(ClassCastException e) {
+            TextFlow tf = (TextFlow) _mouseEvent.getSource();
+            ImageView[] imgs = {slot1, slot2, slot3, slot4};
+            for(ImageView iv : imgs) {
+                if(tf.getLayoutY() == iv.getLayoutY()) {
+                    btnimg = iv;
+                    break;
+                }
+            }
+        }
+        MC.playsfx("button");
         if(!imgcomp(btnimg.getImage(), newGamePressed)) {
-            String s = ((ImageView) _mouseEvent.getSource()).getId();
+            String s = btnimg.getId();
             MScont.setPlayer(players.get(Integer.parseInt(s.substring(s.length()-1)) - 1));
             Stage _stage = (Stage) ((Node) _mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(nextScene);
@@ -93,6 +136,7 @@ public class SlotScene {
             ngcont.setPrevStageScene((Stage)((Node)_mouseEvent.getSource()).getScene().getWindow());
             ngcont.setnextsceneandcont(nextScene, MScont);
             ngcont.setcurscene(this);
+            ngcont.setmc(MC);
 
             ngstage.setScene(ngscene);
             ngscene.setFill(Color.TRANSPARENT);
@@ -118,6 +162,22 @@ public class SlotScene {
         for(int i=0; i<4; i++) {
             if(i < players.size()){
                 slotsarr[i].setImage(loadGameReleased);
+                Text name = new Text();
+                name.setText(players.get(i).getP_name());
+                name.setFont(new Font("SF Pixelate", 75));
+                name.setFill(Color.WHITE);
+                TextFlow TF = new TextFlow(name);
+                TF.setPrefWidth(704);
+                TF.setPrefHeight(128);
+                TF.setLayoutX(352);
+                TF.setLayoutY(192 + (i*160));
+                TF.setTextAlignment(TextAlignment.CENTER);
+                name.setTranslateY(32);
+                TF.setOnMouseClicked(slotsarr[i].getOnMouseClicked());
+                TF.setOnMouseEntered(slotsarr[i].getOnMouseEntered());
+                TF.setOnMouseExited(slotsarr[i].getOnMouseExited());
+                Pane curpane = (Pane)slot1.getParent();
+                curpane.getChildren().add(TF);
             }
             else{
                 slotsarr[i].setImage(newGameReleased);

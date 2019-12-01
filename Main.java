@@ -13,9 +13,6 @@ public class Main extends Application {
     private int panewidth = 1408;
     private int paneheight = 896;
 
-    private boolean music = true;
-    private boolean sfx = true;
-
     private ArrayList<Player> playerList = new ArrayList<Player>();
 
     @Override
@@ -76,6 +73,8 @@ public class Main extends Application {
 
         levelselcontroller.setPrevScene(playermainscene, playermaincontroller);
         levelselcontroller.setmc(mc);
+
+        mc.playMusic("bgm");
 
         TitleStage.getIcons().add(new Image(getClass().getResourceAsStream("assets/sprites/PVZLogo.png")));
         TitleStage.setTitle("Plants V/S Zombies: RETRO EDITION");

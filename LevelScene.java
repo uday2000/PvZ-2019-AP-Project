@@ -75,9 +75,10 @@ public class LevelScene implements Serializable {
     public void onDragDetected(MouseEvent event) {
         imageDropped = false;
         Label[] sidebar = {plant, sun, walnut, potato};
+        int[] values = {100,50,50,25};
         dragged = true;
         for (int i = 0; i < 4; i++) {
-            if (sidebar[i] == event.getSource() && Integer.parseInt(counter.getText()) >= 25) {
+            if (sidebar[i] == event.getSource() && Integer.parseInt(counter.getText()) >= values[i]) {
                 Dragboard db = sidebar[i].startDragAndDrop(TransferMode.COPY);
                 ClipboardContent content = new ClipboardContent();
                 content.putString(Integer.toString(i));
@@ -213,11 +214,13 @@ public class LevelScene implements Serializable {
         menuButtonImage.setImage(menuReleased);
     }
     public void menuclick(MouseEvent _mouseEvent) throws Exception{
+        MC.playsfx("button");
         FXMLLoader exitloader = new FXMLLoader(getClass().getResource("FXMLS/MenuPanel.fxml"));
         Parent exitparent = exitloader.load();
         Scene exitscene = new Scene(exitparent, panewidth ,paneheight);
         PopupController popupcontroller = (PopupController) exitloader.getController();
         popupcontroller.setPrevStageScene((Stage)((Node)_mouseEvent.getSource()).getScene().getWindow());
+        popupcontroller.setmc(MC);
 
         Stage exitstage = new Stage();
         exitstage.setScene(exitscene);
@@ -249,14 +252,13 @@ public class LevelScene implements Serializable {
         int y = GridPane.getRowIndex(node);
         int x = GridPane.getColumnIndex(node);
         ImageView pea = new ImageView();
-        System.out.println("x and y are" + x + " " + y);
         pea.setImage(new Image(LevelScene.class.getResourceAsStream("assets/sprites/misc/BulletPea.png")));
         Bounds gridBounds = gridPane.getBoundsInParent();
         pea.setLayoutX(gridBounds.getMinX() + (x * gridSize) + 128);
         pea.setLayoutY(gridBounds.getMinY() + (y * gridSize) + 40);
         pane.getChildren().add(pea);
         KeyValue xValue = new KeyValue(pea.translateXProperty(), 1100);
-        KeyFrame keyFrame = new KeyFrame(Duration.millis(1000 * (9 - y)), xValue);
+        KeyFrame keyFrame = new KeyFrame(Duration.millis(500 * (9 - y)), xValue);
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.getKeyFrames().addAll(keyFrame);

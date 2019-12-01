@@ -19,7 +19,6 @@ public class SpanningScene
     private int paneheight = 896;
     private int curlevel;
     private Stage curstage;
-    private boolean play = false;
     @FXML
     private ImageView spanningImage;
 
@@ -45,6 +44,7 @@ public class SpanningScene
         Scene levelScene = new Scene(levelParent, panewidth, paneheight);
         LevelScene levelsceneController =  LevelLoader.getController();
         levelsceneController.setlevel(curlevel);
+        levelsceneController.setmc(MC);
 
         Stage nplaystage = new Stage();
         nplaystage.initStyle(StageStyle.UNDECORATED);
@@ -58,6 +58,7 @@ public class SpanningScene
     }
 
     void setlvl(int lvl){
+        curlevel = lvl;
         switch (lvl) {
             case 1:
                 spanningImage.setImage(new Image(getClass().getResourceAsStream("assets\\sprites\\Spanning_animations\\LevelSpanning1.gif")));
@@ -82,5 +83,4 @@ public class SpanningScene
     public void setstage(Stage _stage, Scene _scene) {
         curstage = _stage;
     }
-    public void setCurlevel(int curlvl){curlevel = curlvl;}
 }

@@ -111,6 +111,7 @@ public class LevelSelectScene
     @FXML
     private void selectLevel1(MouseEvent _mouseEvent) {
         if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedButton)) {
+            MC.playsfx("button");
             msobj.setlevelnum(1);
             Stage _stage = (Stage) ((Node) _mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(prevScene);
@@ -119,6 +120,7 @@ public class LevelSelectScene
     @FXML
     private void selectLevel2(MouseEvent _mouseEvent) {
         if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedButton)) {
+            MC.playsfx("button");
             msobj.setlevelnum(2);
             Stage _stage = (Stage) ((Node) _mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(prevScene);
@@ -127,6 +129,7 @@ public class LevelSelectScene
     @FXML
     private void selectLevel3(MouseEvent _mouseEvent) {
         if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedButton)) {
+            MC.playsfx("button");
             msobj.setlevelnum(3);
             Stage _stage = (Stage) ((Node) _mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(prevScene);
@@ -135,6 +138,7 @@ public class LevelSelectScene
     @FXML
     private void selectLevel4(MouseEvent _mouseEvent) {
         if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedButton)) {
+            MC.playsfx("button");
             msobj.setlevelnum(4);
             Stage _stage = (Stage) ((Node) _mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(prevScene);
@@ -143,6 +147,7 @@ public class LevelSelectScene
     @FXML
     private void selectLevel5(MouseEvent _mouseEvent) {
         if(!imgcomp(((ImageView)_mouseEvent.getSource()).getImage(), lockedButton)){
+            MC.playsfx("button");
             msobj.setlevelnum(5);
             Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
             _stage.setScene(prevScene);
@@ -150,6 +155,7 @@ public class LevelSelectScene
     }
 
     public void backClick(MouseEvent _mouseEvent) throws Exception{
+        MC.playsfx("button");
         Stage _stage = (Stage)((Node)_mouseEvent.getSource()).getScene().getWindow();
         _stage.setScene(prevScene);
     }

@@ -1,19 +1,20 @@
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class MusicController {
     private boolean BGMMusic;
     private boolean SFXMusic;
 
-    private ArrayList<MediaPlayer> allmedias;
+    private ArrayList<MediaPlayer> allmusic;
 
     MusicController()
     {
         BGMMusic = true;
         SFXMusic = true;
-        allmedias = new ArrayList<MediaPlayer>();
+        allmusic = new ArrayList<MediaPlayer>();
     }
 
     public boolean getbgm() {
@@ -28,18 +29,31 @@ public class MusicController {
     public void setsfx(boolean b) {
         SFXMusic = b;
     }
-    public void playAudio(Media _media, boolean loop) {
-        MediaPlayer mp = new MediaPlayer(_media);
-        mp.play();
-        if(loop) {
-            mp.setCycleCount(MediaPlayer.INDEFINITE);
-            allmedias.add(mp);
+    public void playMusic(String s) {
+        if(BGMMusic) {
+            if(s.equals("bgm")) {
+                Media music = new Media(new File("assets/Audio/BGM.mp3").toURI().toString());
+                MediaPlayer musicplay = new MediaPlayer(music);
+                musicplay.setCycleCount(MediaPlayer.INDEFINITE);
+                musicplay.setVolume(0.5);
+                musicplay.play();
+                allmusic.add(musicplay);
+            }
+        }
+    }
+    public void playsfx(String sfx) {
+        if(SFXMusic){
+            if(sfx.equals("button")) {
+                Media buttonclick = new Media(new File("assets/Audio/ButtonClick.aiff").toURI().toString());
+                MediaPlayer buttonplay = new MediaPlayer(buttonclick);
+                buttonplay.play();
+            }
         }
     }
     public void stopAll() {
-        for(MediaPlayer mp : allmedias){
+        for(MediaPlayer mp : allmusic){
             mp.stop();
-            allmedias.remove(mp);
         }
+        allmusic.clear();
     }
 }
