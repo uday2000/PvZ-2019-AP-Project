@@ -18,7 +18,8 @@ public class SpanningScene
     private int panewidth = 1408;
     private int paneheight = 896;
     private int curlevel;
-    private Stage curstage;
+    private Stage curstage, mainstage;
+    private Player curplayer;
     @FXML
     private ImageView spanningImage;
 
@@ -45,7 +46,7 @@ public class SpanningScene
         LevelScene levelsceneController =  LevelLoader.getController();
         levelsceneController.setlevel(curlevel);
         levelsceneController.setmc(MC);
-
+        levelsceneController.setPlayer(curplayer);
         Stage nplaystage = new Stage();
         nplaystage.initStyle(StageStyle.UNDECORATED);
         nplaystage.setScene(levelScene);
@@ -80,7 +81,8 @@ public class SpanningScene
         }
         System.gc();
     }
-    public void setstage(Stage _stage, Scene _scene) {
+    public void setstage(Stage _stage, Player p) {
         curstage = _stage;
+        curplayer = p;
     }
 }

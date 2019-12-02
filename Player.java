@@ -32,7 +32,7 @@ public class Player implements Serializable {
     }
     public void setlevel(int lvlnum, LevelScene LS) {
         if(lvldata.get(lvlnum - 1) == null) {
-            lvldata.set(lvlnum, LS);
+            lvldata.set(lvlnum - 1, LS);
         }
     }
 }

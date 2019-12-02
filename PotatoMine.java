@@ -9,40 +9,51 @@ public class PotatoMine extends Plants implements Runnable {
     private final static String pmarmed = ("assets/sprites/plants/PotatomineArmed.gif");
     private final static String pblasted = ("assets/sprites/plants/PotatomineExplode.gif");
     boolean armed = false;
-
-    private MusicController MC;
-    public void setmc(MusicController mc) { MC = mc;}
-
+    boolean eaten = false;
     PotatoMine(GridPane gridPane, Node node) {
         super(gridPane, node);
         this.setImage(new Image(getClass().getResourceAsStream(pmhidden)));
         this.setOpacity(1);
         this.type="POTATO";
-        this.health = 250;
+        this.health = 300;
     }
 
     @Override
-    public boolean attack(Zombie zm) {
+    public boolean attack(Zombie zm) throws KillPlantException, InterruptedException, KillZombieException {
         while (!armed && health>0){
             this.health = this.health - zm.getDamage();
+            Thread.sleep(1000);
         }
+
         if (health>0) {
-            health = 100000;
+            health = 10000;
             this.setImage(new Image(getClass().getResourceAsStream("assets/sprites/plants/PotatomineExplode.gif")));
             ((ImageView) node).setImage(this.getImage());
-            Pane parPane = (Pane) gridPane.getParent();
-            armed = false;
-            return false;
+            armed=false;
+            eaten=true;
+            zm.health=0;
+            throw new KillZombieException("Mine out");
         }
-        return true;
+        if (health<=0 && !eaten ) {
+            this.setImage(new Image(getClass().getResourceAsStream("assets/sprites/plants/PotatomineEaten.gif")));
+            ((ImageView) node).setImage(this.getImage());
+            armed=false;
+            throw new KillPlantException("Mine out");
+        }
+        else {
+            throw new KillPlantException("Mine already eaten");
+        }
     }
 
     @Override
     public void run() {
         try {
             Thread.sleep(14000);
-            this.setImage(new Image(getClass().getResourceAsStream(pmarmed)));
-            armed=true;
+            if (health>0) {
+                this.setImage(new Image(getClass().getResourceAsStream(pmarmed)));
+                armed = true;
+            }
+            //LevelScene.img[GridPane.getRowIndex(node)][GridPane.getColumnIndex(node)] = "assets/sprites/plants/PotatoArmed.gif";
             ((ImageView)node).setImage(this.getImage());;
 
         } catch (InterruptedException e) {

@@ -26,7 +26,7 @@ public class Shooter extends Plants implements Runnable{
         this.setImage(new Image(getClass().getResourceAsStream(shooterIdle)));
         this.setOpacity(1);
         this.type="SHOOTER";
-        this.health = 250;
+        this.health = 300;
         this.pane = pane;
     }
 
@@ -36,14 +36,18 @@ public class Shooter extends Plants implements Runnable{
     }
 
     @Override
-    public boolean attack(Zombie zm) {
+    public boolean attack(Zombie zm) throws InterruptedException, KillPlantException, KillZombieException {
         while (zm.health>0 && this.health>0){
-            this.health -= zm.getDamage();
+            this.health = this.health-zm.getDamage();
+            Thread.sleep(1000);
         }
         if (this.health<=0){
             this.setImage(new Image(getClass().getResourceAsStream(shooterEaten)));
             ((ImageView)node).setImage(this.getImage());
-            return false;
+            throw new KillPlantException("Shooter eaten");
+        }
+        if (zm.health<=0){
+            throw new KillZombieException("Shot Down");
         }
         return true;
     }

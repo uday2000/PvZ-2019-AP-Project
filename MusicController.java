@@ -35,7 +35,6 @@ public class MusicController {
                 Media music = new Media(new File("assets/Audio/BGM.mp3").toURI().toString());
                 MediaPlayer musicplay = new MediaPlayer(music);
                 musicplay.setCycleCount(MediaPlayer.INDEFINITE);
-                musicplay.setVolume(0.5);
                 musicplay.play();
                 allmusic.add(musicplay);
             }
@@ -46,6 +45,7 @@ public class MusicController {
             if(sfx.equals("button")) {
                 Media buttonclick = new Media(new File("assets/Audio/ButtonClick.aiff").toURI().toString());
                 MediaPlayer buttonplay = new MediaPlayer(buttonclick);
+                buttonplay.setVolume(0.75);
                 buttonplay.play();
             }
         }

@@ -18,6 +18,7 @@ public class PopupController {
     private Scene nscene;
     private MainScene mcont;
     private SlotScene SS;
+    private LevelScene LS;
 
     @FXML
     private TextField ntext;
@@ -92,6 +93,10 @@ public class PopupController {
         _stage.close();
     }
 
+    public void setPrevStageScene(Stage _stage, LevelScene ls) {
+        prevstage = _stage;
+        LS = ls;
+    }
     public void setPrevStageScene(Stage _stage) {
         prevstage = _stage;
     }
@@ -105,6 +110,7 @@ public class PopupController {
     public void savegame(MouseEvent _mouseEvent){
         MC.playsfx("button");
         prevstage.close();
+        LS.savelevel();
         Stage _stage = (Stage)saveButtonImage.getScene().getWindow();
         _stage.close();
     }

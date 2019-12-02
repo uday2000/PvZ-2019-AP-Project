@@ -76,6 +76,8 @@ public class Main extends Application {
 
         mc.playMusic("bgm");
 
+        playerList.add(new Player("XXpoomaanXX", 3, 5));
+
         TitleStage.getIcons().add(new Image(getClass().getResourceAsStream("assets/sprites/PVZLogo.png")));
         TitleStage.setTitle("Plants V/S Zombies: RETRO EDITION");
         TitleStage.setScene(titlescene);

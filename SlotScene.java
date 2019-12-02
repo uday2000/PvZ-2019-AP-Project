@@ -44,10 +44,11 @@ public class SlotScene {
     @FXML
     private void buttonPress(MouseEvent _mouseEvent) throws InterruptedException {
         ImageView btn = slot1;
+        TextFlow tf = null;
         try {
             btn = (ImageView) _mouseEvent.getSource();
         }catch(ClassCastException e) {
-            TextFlow tf = (TextFlow) _mouseEvent.getSource();
+            tf = (TextFlow) _mouseEvent.getSource();
             ImageView[] imgs = {slot1, slot2, slot3, slot4};
             for(ImageView iv : imgs) {
                 if(tf.getLayoutY() == iv.getLayoutY()) {
@@ -58,16 +59,20 @@ public class SlotScene {
         }
         if(imgcomp(btn.getImage(), newGameReleased))
             btn.setImage(newGamePressed);
-        else
+        else {
             btn.setImage(loadGamePressed);
+            Text t = (Text)tf.getChildren().get(0);
+            t.setFill(Color.GRAY);
+        }
     }
     @FXML
     private void buttonRelease(MouseEvent _mouseEvent) throws InterruptedException {
         ImageView btn = slot1;
+        TextFlow tf = null;
         try {
             btn = (ImageView) _mouseEvent.getSource();
         }catch(ClassCastException e) {
-            TextFlow tf = (TextFlow) _mouseEvent.getSource();
+            tf = (TextFlow) _mouseEvent.getSource();
             ImageView[] imgs = {slot1, slot2, slot3, slot4};
             for(ImageView iv : imgs) {
                 if(tf.getLayoutY() == iv.getLayoutY()) {
@@ -78,8 +83,11 @@ public class SlotScene {
         }
         if(imgcomp(btn.getImage(), newGamePressed))
             btn.setImage(newGameReleased);
-        else
+        else {
             btn.setImage(loadGameReleased);
+            Text t = (Text)tf.getChildren().get(0);
+            t.setFill(Color.WHITE);
+        }
     }
     @FXML
     private void backPress() throws InterruptedException {

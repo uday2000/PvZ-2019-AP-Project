@@ -24,32 +24,27 @@ import java.util.Random;
 
 public class LevelScene implements Serializable {
 
-    public static String[][] img = new String[5][9];
+    static String[][] img = new String[5][9];
     private static int panewidth = 1408;
     private static int paneheight = 896;
-    private int movespeed = 100;
     private static boolean imageDropped = false;
     public transient Text counter;
-    public transient Label blank, plant, walnut, potato, sun;
-    private Plants[][] data;
-    private MusicController MC;
+    public transient Label blank, plant, walnut, potato, sun, shovel;
+    private transient Plants[][] data;
+    private static MusicController MC;
     public void setmc(MusicController mc) { MC = mc;}
     private static int gridSize = 128;
     @FXML
-    private transient ImageView zombie1, zombie2;
-    @FXML
     private transient ImageView menuButtonImage;
-    public transient GridPane grid;
+    public transient GridPane grid, lawnMower;
     public transient Pane pane;
     private int level;
-    private transient final Image peaShooterIdle = new Image(getClass().getResourceAsStream("assets\\sprites\\plants\\PeaShooterIdle.gif"));
-    private transient final Image potatoMineHidden = new Image(getClass().getResourceAsStream("assets\\sprites\\plants\\PotatoMineHidden.gif"));
-    private transient final Image sunFlowerIdle = new Image(getClass().getResourceAsStream("assets\\sprites\\plants\\SunflowerIdle.gif"));
-    private transient final Image walnutIdle = new Image(getClass().getResourceAsStream("assets\\sprites\\plants\\WalnutIdle.gif"));
-    private transient final Image emptyBlock = new Image(getClass().getResourceAsStream("assets\\sprites\\misc\\EmptyBlock.png"));
     private transient final Image menuPressed = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\MenuButtonPressed.png"));
     private transient final Image menuReleased = new Image(getClass().getResourceAsStream("assets\\sprites\\buttons\\MenuButtonReleased.png"));
     private static boolean dragged = false;
+    private static Player curp;
+
+    private Image emptyBlock = new Image(getClass().getResourceAsStream("assets\\sprites\\misc\\EmptyBlock.png"));
 
     @FXML
     public void initialize(){
@@ -58,8 +53,9 @@ public class LevelScene implements Serializable {
                         ae->{spawnSun();}));
         tl.setCycleCount(Animation.INDEFINITE);
         tl.play();
+
         data = new Plants[5][9];
-        ZombieController zc = new ZombieController(this.pane, this.grid, level, data);
+        ZombieController zc = new ZombieController(this.pane, this.grid, level, data, lawnMower);
         zc.start();
     }
 
@@ -77,18 +73,30 @@ public class LevelScene implements Serializable {
         Label[] sidebar = {plant, sun, walnut, potato};
         int[] values = {100,50,50,25};
         dragged = true;
-        for (int i = 0; i < 4; i++) {
-            if (sidebar[i] == event.getSource() && Integer.parseInt(counter.getText()) >= values[i]) {
-                Dragboard db = sidebar[i].startDragAndDrop(TransferMode.COPY);
-                ClipboardContent content = new ClipboardContent();
-                content.putString(Integer.toString(i));
-                db.setContent(content);
-                event.consume();
+        if (event.getSource()==shovel){
+            Dragboard db = shovel.startDragAndDrop(TransferMode.COPY);
+            ClipboardContent content = new ClipboardContent();
+            content.putString("SHOVEL");
+            db.setContent(content);
+            event.consume();
+        }
+        else {
+            for (int i = 0; i < 4; i++) {
+                if (sidebar[i] == event.getSource() && Integer.parseInt(counter.getText()) >= values[i]) {
+                    Dragboard db = sidebar[i].startDragAndDrop(TransferMode.COPY);
+                    ClipboardContent content = new ClipboardContent();
+                    content.putString(Integer.toString(i));
+                    db.setContent(content);
+                    event.consume();
+                }
             }
         }
     }
     public void cellOnDragOver(DragEvent event) {
         if (eventCheck(event) && event.getDragboard().hasString()) {
+            event.acceptTransferModes(TransferMode.ANY);
+        }
+        if (event.getGestureSource()==shovel){
             event.acceptTransferModes(TransferMode.ANY);
         }
         event.consume();
@@ -97,8 +105,8 @@ public class LevelScene implements Serializable {
         Node target = (Node) event.getSource();
         String prevState = img[GridPane.getRowIndex(target)][GridPane.getColumnIndex(target)];
         double prevOpacity = target.getOpacity();
-        if (prevState==null || prevState.equals("assets\\sprites\\misc\\EmptyBlock.png")){
-            prevState="assets\\sprites\\misc\\EmptyBlock.png";
+        if (prevState == null || prevState.equals("assets\\sprites\\misc\\EmptyBlock.png")) {
+            prevState = "assets\\sprites\\misc\\EmptyBlock.png";
             prevOpacity = 0.2;
         }
         if (!imageDropped) {
@@ -141,9 +149,18 @@ public class LevelScene implements Serializable {
                 Thread thread = new Thread(plants);
                 thread.start();
                 setCoins(Integer.parseInt(event.getDragboard().getString()));
+
             }
         }
-        dragged = false;
+        else if (event.getGestureSource()==shovel){
+            Node target = (Node) event.getSource();
+            int colIndex = GridPane.getColumnIndex(target);
+            int rowIndex = GridPane.getRowIndex(target);
+            img[rowIndex][colIndex] = "assets\\sprites\\misc\\EmptyBlock.png";
+            ((ImageView) target).setImage(emptyBlock);
+            ((ImageView) target).setOpacity(0.2);
+
+        }
         event.setDropCompleted(true);
         event.consume();
     }
@@ -159,7 +176,7 @@ public class LevelScene implements Serializable {
             return img_path;
     }
 
-    public void setCoins(int i) {
+    private void setCoins(int i) {
         int coins = Integer.parseInt(counter.getText());
         counter.setText(Integer.toString(coins + 10));
         switch (i) {
@@ -219,7 +236,7 @@ public class LevelScene implements Serializable {
         Parent exitparent = exitloader.load();
         Scene exitscene = new Scene(exitparent, panewidth ,paneheight);
         PopupController popupcontroller = (PopupController) exitloader.getController();
-        popupcontroller.setPrevStageScene((Stage)((Node)_mouseEvent.getSource()).getScene().getWindow());
+        popupcontroller.setPrevStageScene((Stage)((Node)_mouseEvent.getSource()).getScene().getWindow(), this);
         popupcontroller.setmc(MC);
 
         Stage exitstage = new Stage();
@@ -248,7 +265,7 @@ public class LevelScene implements Serializable {
         }
     }
 
-    static void shoot(Node node, GridPane gridPane, Pane pane) throws InterruptedException {
+    private static void shoot(Node node, GridPane gridPane, Pane pane) throws InterruptedException {
         int y = GridPane.getRowIndex(node);
         int x = GridPane.getColumnIndex(node);
         ImageView pea = new ImageView();
@@ -265,7 +282,17 @@ public class LevelScene implements Serializable {
         timeline.play();
     }
 
-    public void setlevel(int lvl){
+    void setlevel(int lvl){
         level = lvl;
+    }
+    void savelevel() {
+        curp.setlevel(level, this);
+    }
+    void setPlayer(Player p) {
+        curp = p;
+    }
+    public void zombieCreation(MouseEvent mouseEvent) {
+        ZombieController zc = new ZombieController(this.pane, this.grid, 0, data,lawnMower);
+        zc.start();
     }
 }

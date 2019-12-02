@@ -8,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="986.0" prefWidth="1408.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PopupController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="896.0" prefWidth="1408.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PopupController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="986.0" opacity="0.5" stroke="#000000" strokeType="INSIDE" width="1408.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="896.0" opacity="0.5" stroke="#000000" strokeType="INSIDE" width="1408.0" />
       <ImageView fitHeight="480.0" fitWidth="512.0" layoutX="448.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sprites/Panels/PopupPause.png" />

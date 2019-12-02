@@ -14,18 +14,19 @@ public class Sunflower extends Plants implements Runnable
         this.setImage(new Image(getClass().getResourceAsStream(sunIdle)));
         this.setOpacity(1);
         this.type="SUN";
-        this.health = 250;
+        this.health = 300;
     }
 
     @Override
-    public boolean attack(Zombie zm) {
+    public boolean attack(Zombie zm) throws InterruptedException, KillPlantException {
         while (zm.health>0 && this.health>0){
-            this.health = this.health - zm.getDamage();
+            this.health = this.health-zm.getDamage();
+            Thread.sleep(1000);
         }
         if (this.health<=0){
             this.setImage(new Image(getClass().getResourceAsStream(sunEaten)));
             ((ImageView)node).setImage(this.getImage());
-            return false;
+            throw new KillPlantException("Sun Down");
         }
         return true;
     }
@@ -33,12 +34,14 @@ public class Sunflower extends Plants implements Runnable
     @Override
     public void run() {
         try {
-            while (true) {
+            while (health>0) {
                 if (LevelScene.img[GridPane.getRowIndex(node)][GridPane.getColumnIndex(node)]!=null || !(LevelScene.img[GridPane.getRowIndex(node)][GridPane.getColumnIndex(node)].equals("assets/sprites/plants/SunflowerShoot.gif"))) {
-                    Thread.sleep(20000);
-                    this.setImage(new Image(getClass().getResourceAsStream(sunToken)));
-                    LevelScene.img[GridPane.getRowIndex(node)][GridPane.getColumnIndex(node)] = "assets/sprites/plants/SunflowerShoot.gif";
-                    ((ImageView)node).setImage(this.getImage());
+                    Thread.sleep(17000);
+                    if (health>0) {
+                        this.setImage(new Image(getClass().getResourceAsStream(sunToken)));
+                        LevelScene.img[GridPane.getRowIndex(node)][GridPane.getColumnIndex(node)] = "assets/sprites/plants/SunflowerShoot.gif";
+                        ((ImageView) node).setImage(this.getImage());
+                    }
                 }
             }
         } catch (InterruptedException e) {

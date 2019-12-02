@@ -26,6 +26,11 @@
             <Image url="@../assets/sprites/buttons/CreditsButtonReleased.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="settingsButtonImage" fitHeight="256.0" fitWidth="256.0" layoutX="802.0" layoutY="620.0" onMouseClicked="#settingsScreen" onMouseEntered="#settingsPress" onMouseExited="#settingsRelease" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/SettingsButtonReleased.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="playGameButtonImage" fitHeight="490.0" fitWidth="564.0" layoutX="672.0" layoutY="12.0" onMouseClicked="#playScreen" onMouseEntered="#playGamePress" onMouseExited="#playGameRelease" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sprites/buttons/AdventureButtonReleased.png" />
@@ -41,9 +46,9 @@
             <Image url="@../assets/sprites/buttons/ExitGButtonReleased.png" />
          </image>
       </ImageView>
-      <TextFlow layoutX="100.0" layoutY="185.0" prefHeight="47.0" prefWidth="499.0">
+      <TextFlow layoutX="100.0" layoutY="185.0" prefHeight="47.0" prefWidth="499.0" textAlignment="CENTER">
          <children>
-            <Text fx:id="nametext" fill="WHITE" fontSmoothingType="LCD" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="XXpoomaanXX" textAlignment="CENTER" translateX="80.0" translateY="8.0" wrappingWidth="477.07421875">
+            <Text fx:id="nametext" fill="WHITE" fontSmoothingType="LCD" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="XXpoomaanXX" textAlignment="CENTER" translateY="8.0" wrappingWidth="477.07421875">
                <font>
                   <Font name="SF Pixelate" size="40.0" />
                </font>

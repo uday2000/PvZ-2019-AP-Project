@@ -115,7 +115,7 @@ public class MainScene {
         Stage _stage = new Stage();
 
         spanController.setlvl(Integer.parseInt(levelnum.getText()));
-        spanController.setstage(_stage, spanScene);
+        spanController.setstage(_stage, curplayer);
         spanController.setmc(MC);
 
         _stage.setScene(spanScene);

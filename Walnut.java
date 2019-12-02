@@ -18,18 +18,20 @@ public class Walnut extends Plants implements Runnable {
     }
 
     @Override
-    public boolean attack(Zombie zm) {
+    public boolean attack(Zombie zm) throws InterruptedException, KillPlantException {
         while (zm.health>0 && this.health>0){
-            this.health = this.health - zm.getDamage();
-            if (this.health<50){
+            this.health = this.health-zm.getDamage();
+            if (this.health<1800){
                 this.setImage(new Image(getClass().getResourceAsStream(walnutHalf)));
                 ((ImageView)node).setImage(this.getImage());
             }
+            Thread.sleep(1000);
         }
         if (this.health<=0){
             this.setImage(new Image(getClass().getResourceAsStream(walnutEaten)));
             ((ImageView)node).setImage(this.getImage());
-            return false;
+            throw new KillPlantException("Walnut down");
+
         }
         return true;
     }

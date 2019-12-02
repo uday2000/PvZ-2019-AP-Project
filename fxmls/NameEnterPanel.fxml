@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="896.0" prefWidth="1408.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PopupController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="896.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="1408.0" />
+      <ImageView fitHeight="480.0" fitWidth="512.0" layoutX="448.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/Panels/PopupEnterName.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="ntext" alignment="CENTER" layoutX="480.0" layoutY="424.0" prefHeight="44.0" prefWidth="448.0" style="-fx-background-color: transparent; -fx-text-fill: white;">
+         <font>
+            <Font name="SF Pixelate" size="20.0" />
+         </font>
+      </TextField>
+      <ImageView fx:id="nextButtonImage" fitHeight="150.0" fitWidth="200.0" layoutX="604.0" layoutY="531.0" onMouseClicked="#nextGame" onMouseEntered="#nextPress" onMouseExited="#nextRelease" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/NextButtonReleased.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

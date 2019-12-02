@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="896.0" prefWidth="1408.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LevelEndScene">
+   <children>
+      <ImageView fitHeight="896.0" fitWidth="1408.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/bgs/LoseBG.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backButtonImage" fitHeight="279.0" fitWidth="256.0" layoutX="576.0" layoutY="736.0" onMouseClicked="#backClick" onMouseEntered="#backPress" onMouseExited="#backRelease" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sprites/buttons/BackButtonReleased.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
